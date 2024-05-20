@@ -1,3 +1,5 @@
+import 'react-native-gesture-handler';
+
 import './reactotron';
 import Routes from './src/Routes';
 

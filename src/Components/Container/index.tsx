@@ -1,5 +1,11 @@
 import React from 'react';
-import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
+import {
+  SafeAreaView,
+  StyleProp,
+  StyleSheet,
+  View,
+  ViewStyle,
+} from 'react-native';
 import { customColors } from '../../Theme/globalStyles';
 
 interface IProps {
@@ -8,13 +14,22 @@ interface IProps {
 }
 
 const Container = ({ children, style }: IProps) => {
-  return <View style={[styles.container, style]}>{children}</View>;
+  return (
+    <SafeAreaView style={[styles.container, style]}>
+      <View style={styles.baseStyle}>{children}</View>
+    </SafeAreaView>
+  );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: customColors.black,
+  },
+  baseStyle: {
+    flex: 1,
+    backgroundColor: customColors.black,
+    padding: 24,
   },
 });
 
