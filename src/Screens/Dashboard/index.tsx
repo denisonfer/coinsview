@@ -1,6 +1,7 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useEffect, useState } from 'react';
 import { Dimensions, StyleSheet, Text, View } from 'react-native';
+import { LineChart } from 'react-native-wagmi-charts';
 
 import Chip from '../../Components/Chips';
 import { IChipOption } from '../../Components/Chips/interfaces';
@@ -51,6 +52,7 @@ const Dashboard: React.FC = () => {
           high: tickerData.h,
           low: tickerData.l,
           quoteVolume: tickerData.q,
+          timestamp: tickerData.E,
         });
       }
     };
@@ -92,6 +94,55 @@ const Dashboard: React.FC = () => {
     );
   };
 
+  const data = [
+    {
+      timestamp: 1716172303798,
+      value: Number('66657.75000000'),
+    },
+    {
+      timestamp: 1716172304553,
+      value: Number('66657.75'),
+    },
+    {
+      timestamp: 1716172332803,
+      value: Number('66674.98000000'),
+    },
+    {
+      timestamp: 1716172335791,
+      value: Number('66675.00000000'),
+    },
+    // continue with the rest of the data with random values
+    {
+      timestamp: 1716172335791,
+      value: Number('66675.00000000'),
+    },
+    {
+      timestamp: 1716172303798,
+      value: Number('66657.75000000'),
+    },
+    {
+      timestamp: 1716172304553,
+      value: Number('66657.75'),
+    },
+    {
+      timestamp: 1716172332803,
+      value: Number('66674.98000000'),
+    },
+    {
+      timestamp: 1716172335791,
+      value: Number('66675.00000000'),
+    },
+    // continue with the rest of the data with random values
+    {
+      timestamp: 1716172335791,
+      value: Number('66675.00000000'),
+    },
+    {
+      timestamp: 1716172303798,
+      value: Number('66657.75000000'),
+    },
+  ];
+
   return (
     <View style={{ flex: 1, backgroundColor: customColors.black }}>
       <View style={styles.header}>
@@ -113,6 +164,24 @@ const Dashboard: React.FC = () => {
         <Chip chipOptions={chipOptions} onPress={handleChipPress} />
 
         <CoinCard symbolData={{ ...tickerData, ...symbolInfo }} />
+
+        <LineChart.Provider data={data}>
+          <LineChart width={Dimensions.get('window').width - 60} height={320}>
+            <LineChart.Path color={customColors.primaryLight}>
+              <LineChart.Gradient color={customColors.primaryLight} />
+              <LineChart.HorizontalLine
+                at={{ index: 0 }}
+                color={customColors.stormGrey}
+              />
+            </LineChart.Path>
+            <LineChart.CursorCrosshair color={customColors.snowWhite}>
+              <LineChart.Dot color='red' at={1} />
+              <LineChart.Tooltip
+                textStyle={{ color: customColors.stormGrey }}
+              />
+            </LineChart.CursorCrosshair>
+          </LineChart>
+        </LineChart.Provider>
 
         {/*  <VictoryChart theme={VictoryTheme.material}>
 		 <VictoryLine

@@ -4,6 +4,7 @@ import { coinMapping } from '../Shared/CoinsMapping';
 import { ICoinByIdResponse } from '../Shared/StreamsInterfaces/SymbolTickerInterface';
 
 const COINGECKO_API_URL = 'https://api.coingecko.com/api/v3/';
+const API_KEY = 'CG-DERC3Bae6Lz2d8qLRHgiEEf2';
 
 export async function fetchCoinData(symbol: keyof typeof coinMapping) {
   const coinId = coinMapping[symbol];
@@ -11,13 +12,12 @@ export async function fetchCoinData(symbol: keyof typeof coinMapping) {
     throw new Error(`Symbol ${symbol} not found in coinMapping`);
   }
 
-  const apiKey = 'CG-DERC3Bae6Lz2d8qLRHgiEEf2';
   const url = `${COINGECKO_API_URL}coins/${coinId}`;
 
   try {
     const response = await axios.get<ICoinByIdResponse>(url, {
       headers: {
-        'x-cg-pro-api-key': apiKey,
+        'x-cg-pro-api-key': API_KEY,
       },
     });
 

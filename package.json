@@ -31,8 +31,7 @@
     "react-native-screens": "3.31.1",
     "react-native-svg": "15.2.0",
     "react-native-wagmi-charts": "^2.4.1",
-    "styled-components": "^6.1.11",
-    "victory-native": "^37.0.3-next.0"
+    "styled-components": "^6.1.11"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

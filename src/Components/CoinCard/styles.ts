@@ -3,7 +3,6 @@ import { customColors } from '../../Theme/globalStyles';
 
 export const styles = StyleSheet.create({
   card: {
-    width: 327,
     height: 75,
     backgroundColor: customColors.darkGrey,
     marginTop: 24,

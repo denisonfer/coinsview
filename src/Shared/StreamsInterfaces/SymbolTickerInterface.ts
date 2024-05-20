@@ -5,6 +5,7 @@ export interface ISymbolTicker {
   high: string;
   low: string;
   quoteVolume: string;
+  timestamp: number;
 }
 /* RETORNO DA STREAM @TICKER 
 {
